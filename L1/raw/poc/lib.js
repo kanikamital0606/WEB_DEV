@@ -12,7 +12,7 @@ console.log("Number is prime ? " + lib(21));
 console.log("Number is prime ? " + lib(23));
 
 //  framework style
-const { exec } = require("child_process")
+let { exec } = require("child_process")
 //exec('yourApp').unref()
 
 // framework => user=> socket 
