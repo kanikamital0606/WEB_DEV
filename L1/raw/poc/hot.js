@@ -19,7 +19,7 @@ function test(number) {
     return true;
 }
 
-// The map() method creates a new array populated with the results of calling 
+//NO The map() method creates a new array populated with the results of calling 
 // a provided function on every element in the calling array.
 let tArr = arr.map(transformer);
 // The filter() method creates a
@@ -32,7 +32,7 @@ console.log(tArr);
 // console.log("````````````````````````````````````");
 // console.log(pArr);
 
-// mymap(arr,transformer);
+// mymap(arr,transformer);  => mymap.js
 // myfilter(arr,test);
 // Relative path=>../../Lecture-1_FS_16_05_2020
 // Absoulte => C:\Users\Mafia\Desktop\GTBIT\Lecture-1_FS_16_05_2020
