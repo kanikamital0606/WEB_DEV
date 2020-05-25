@@ -6,33 +6,9 @@ function transformer(num) {
         return num - 1;
     }
 }
-
 function squarer(x) {
     return x * x;
 }
-
-function mymap(arr,cb){  //mymap = new array
-    let newarr = [];
-    for (let i = 0; i < arr.length; i++) {
-        let retVal = cb(arr[i]);
-        newarr.push(retVal);       
-    }
-    return newarr;
-}
-
-//mymap(arr, transformer);
-///////
-
-function myFilter(arr, cb) {
-    let narr = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (cb(arr[i]) == true) {
-            narr.push(arr[i]);
-        }
-    }
-    return narr;
-}
-
 function test(number) {
     for (let div = 2; div * div <= number; div++) {
         if (number % div == 0) {
@@ -42,17 +18,31 @@ function test(number) {
     }
     return true;
 }
-
+Array.prototype.mymap = function (cb) {
+    let narr = [];
+    for (let i = 0; i < this.length; i++) {
+        let rVal = cb(this[i]);
+        narr.push(rVal);
+    }
+    return narr;
+}
+Array.prototype.myFilter = function (cb) {
+    let narr = [];
+    for (let i = 0; i < this.length; i++) {
+        if (cb(this[i]) == true) {
+            narr.push(this[i]);
+        }
+    }
+    return narr;
+}
 console.log(arr);
 console.log("````````````````````````");
-let tArr = mymap(arr, transformer);
+let tArr = arr.mymap(transformer);
 console.log(tArr);
 console.log("````````````````````````");
-console.log(mymap(arr, squarer)); //square of arr [ 16, 196, 289, 529, 2304, 4356 ]
-let pArr = myFilter(tArr, test);
+let pArr = tArr.myFilter(test);
 console.log(pArr);
 // arr.mymap(transformer);
 // arr.map()
 // parent => feature => inherit childrens
 // Array.prototype.
-
