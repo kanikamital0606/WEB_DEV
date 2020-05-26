@@ -9,7 +9,7 @@ function myFilter(arr, cb) {
     return narr;
 }
 
-//crete function test to test prime in array
+//create function test to test prime in array
 function test(number) {
     for (let div = 2; div * div <= number; div++) {
         if (number % div == 0) {
