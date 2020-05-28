@@ -3,6 +3,7 @@ let path = require("path");
 //  d10=> tree view print
 // d10 => flat file view print
 
+
 // how to check whether a path is file or directory in nodejs ??=> google 
 function checkWhetherFile(path_string) {
     return fs.lstatSync(path_string).isFile();
@@ -13,27 +14,46 @@ function childReader(src) {
     return children;
 }
 // logic
-function view(src) {
+function viewFlatFile(src) {
+    // abstraction
     let isFile = checkWhetherFile(src);
     if (isFile == true) {
         console.log(src + "*");
     } else {
         console.log(src);
-
+        // childreader
         let children = childReader(src);
         // console.log(children);
         for (let i = 0; i < children.length; i++) {
+            // let childPath = src + "/" + children[i]
             let childPath = path.join(src, children[i]);
-            view(childPath);
+            viewFlatFile(childPath);
         }
         // children loop
     }
-
 }
-let input = process.argv[2];
+
+function viewTree(src, indent) {
+    // abstraction
+    let isFile = checkWhetherFile(src);
+    if (isFile == true) {
+        // console.log(src + "*");
+        console.log(indent + path.basename(src) + "*");
+    } else {
+        console.log(indent + path.basename(src));
+        // childreader
+        let children = childReader(src);
+        // console.log(children);
+        for (let i = 0; i < children.length; i++) {
+            // let childPath = src + "/" + children[i]
+            let childPath = path.join(src, children[i]);
+            viewTree(childPath, indent + "\t");
+        }
+        // children loop
+    }
+}
+let input = process.argv.slice(2)[0];
 // console.log(input)
-view(input);
+// viewFlatFile(input);
+viewTree(input, "");
 // node tpp view src
-//node viewFile /home/kanika/D
-//esktop/DEV_pep/L1/activity/command/viewFile.js
-//in terminal node viewFile "copy path"
