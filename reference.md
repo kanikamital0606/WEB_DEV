@@ -28,3 +28,5 @@ https://pptr.dev
 https://github.com/puppeteer/puppeteer/blob/master/docs/api.md
 
 
+to traverse :=> cheerio 
+http://zetcode.com/javascript/cheerio/
